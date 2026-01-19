@@ -647,7 +647,7 @@ export default function Home() {
             e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
           }}
         >
-          <span className={styles.fancyText}>View more RTI demos at Fabric Jumpstart</span>
+          <span className={styles.fancyText}>View more interactive demos at Fabric Jumpstart</span>
         </a>
       </section>
     </div>

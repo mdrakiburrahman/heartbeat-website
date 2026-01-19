@@ -88,6 +88,12 @@
   font-size: 1rem;
 }
 
+:global([data-theme="light"]) .callout {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.7);
+}
+
 /* Architecture Diagram */
 .architectureFigure {
   margin: 0 0 3rem 0;
@@ -117,6 +123,11 @@
   padding: 1.25rem 1.5rem 1.25rem 4rem;
   width: 100%;
   position: relative;
+}
+
+:global([data-theme="light"]) .connectionCard {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.1);
 }
 
 .connectionNumber {
@@ -198,7 +209,7 @@
 }
 
 :global([data-theme="light"]) .connectionDesc {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .connectionHint {
@@ -373,6 +384,10 @@
   margin-bottom: 0.5rem;
 }
 
+:global([data-theme="light"]) .stepTitle {
+  color: rgba(0, 0, 0, 0.9);
+}
+
 .stepDesc {
   color: var(--colorNeutralForeground2, rgba(255,255,255,0.7));
   font-size: 0.95rem;
@@ -380,6 +395,10 @@
   margin-bottom: 1rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+:global([data-theme="light"]) .stepDesc {
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .workflowArrow {

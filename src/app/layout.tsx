@@ -21,7 +21,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header />
-            <main style={{ flex: 1 }}>
+            <main style={{ flex: 1, paddingTop: '56px' }}>
               {children}
             </main>
             <Footer />
