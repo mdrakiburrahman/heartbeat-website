@@ -368,6 +368,37 @@
   border-radius: 6px;
   font-size: 0.85rem;
   color: var(--colorNeutralForeground2, rgba(255,255,255,0.8));
+  position: relative;
+}
+
+.removeProducerBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 0 0 0.5rem;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.producerItem:hover .removeProducerBtn {
+  display: flex;
+}
+
+.removeProducerBtn:hover {
+  color: #ef4444;
+}
+
+:global([data-theme="light"]) .removeProducerBtn {
+  color: rgba(0,0,0,0.4);
+}
+
+:global([data-theme="light"]) .removeProducerBtn:hover {
+  color: #dc2626;
 }
 
 /* Code Block */

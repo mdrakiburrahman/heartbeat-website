@@ -15,7 +15,6 @@ export default function Home() {
 
   // Producer list
   const [producers, setProducers] = useState<{ id: number; name: string }[]>([]);
-  const [nextProducerId, setNextProducerId] = useState(1);
 
   // Spark code from file
   const [sparkCode, setSparkCode] = useState('');
@@ -78,8 +77,17 @@ export default function Home() {
   };
 
   const addProducer = () => {
-    setProducers([...producers, { id: nextProducerId, name: `Producer ${nextProducerId}` }]);
-    setNextProducerId(nextProducerId + 1);
+    // Find the next available ID (lowest unused integer starting from 1)
+    const usedIds = new Set(producers.map(p => p.id));
+    let nextId = 1;
+    while (usedIds.has(nextId)) {
+      nextId++;
+    }
+    setProducers([...producers, { id: nextId, name: `Producer ${nextId}` }]);
+  };
+
+  const removeProducer = (id: number) => {
+    setProducers(producers.filter(p => p.id !== id));
   };
 
   const formatTimestamp = (date: Date) => {
@@ -219,6 +227,13 @@ export default function Home() {
                   <div key={p.id} className={styles.producerItem}>
                     <span className={`${styles.statusDot} ${styles.connected}`} />
                     {p.name}
+                    <button 
+                      className={styles.removeProducerBtn}
+                      onClick={() => removeProducer(p.id)}
+                      aria-label={`Remove ${p.name}`}
+                    >
+                      ×
+                    </button>
                   </div>
                 ))}
               </div>
