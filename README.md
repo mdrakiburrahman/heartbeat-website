@@ -1,13 +1,13 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <img src="https://jumpstartfabric.blob.core.windows.net/public/heroBanner.svg" alt="Logo" width="50%">
-  <h3 align="center">Heartbeat Stream Processing Sandbox for Microsoft Fabric</h3>
+  <img src="https://heartbeatspark.z9.web.core.windows.net/og-image.svg" alt="Logo" width="100%">
+  <h3 align="center">Heartbeat</h3>
   <p align="center">
     Website source code.
     <br />
     <br />
     ·
-    <a href="https://jumpstart.fabric.microsoft.com">Fabric Jumpstart</a>
+    <a href="https://heartbeatspark.z9.web.core.windows.net">Website</a>
     ·
   </p>
 </p>
