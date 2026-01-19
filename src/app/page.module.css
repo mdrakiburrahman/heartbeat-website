@@ -1005,6 +1005,17 @@
   align-items: center;
 }
 
+:global(body[data-theme="light"]) .streamPanel {
+  background: rgba(240, 253, 244, 0.95);
+  border-color: rgba(22, 163, 74, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+:global(body[data-theme="light"]) .streamHeader {
+  background: rgba(220, 252, 231, 0.9);
+  border-bottom-color: rgba(22, 163, 74, 0.2);
+}
+
 .streamTitle {
   font-size: 0.9rem;
   font-weight: 600;
@@ -1687,6 +1698,10 @@
   animation: expandIn 0.2s ease-out;
 }
 
+:global(body[data-theme="light"]) .healthDetails {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
 .healthTimestamp {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
@@ -1698,15 +1713,17 @@
 }
 
 :global(body[data-theme="light"]) .healthStatusPanel {
-  background: rgba(10, 35, 25, 0.98);
-  border-color: rgba(74, 222, 128, 0.3);
+  background: rgba(240, 253, 244, 0.95);
+  border-color: rgba(22, 163, 74, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 :global(body[data-theme="light"]) .healthStatusHeader {
-  background: rgba(15, 45, 30, 0.95);
-  border-bottom-color: rgba(74, 222, 128, 0.15);
+  background: rgba(220, 252, 231, 0.9);
+  border-bottom-color: rgba(22, 163, 74, 0.2);
 }
 
 :global(body[data-theme="light"]) .healthStatusCard {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(22, 163, 74, 0.15);
 }
