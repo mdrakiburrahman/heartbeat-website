@@ -1,7 +1,7 @@
 'use client';
 
 import { useThemeContext } from './ThemeProvider';
-import { WeatherSunny24Regular, WeatherMoon24Regular } from '@fluentui/react-icons';
+import { WeatherSunny24Filled, WeatherMoon24Filled } from '@fluentui/react-icons';
 import { tokens } from '@fluentui/react-components';
 
 const ThemeToggle = () => {
@@ -39,7 +39,7 @@ const ThemeToggle = () => {
           transition: 'left 0.3s ease',
         }}
       />
-      <WeatherSunny24Regular
+      <WeatherSunny24Filled
         style={{
           height: '14px',
           width: '14px',
@@ -47,11 +47,11 @@ const ThemeToggle = () => {
           zIndex: 1,
         }}
       />
-      <WeatherMoon24Regular
+      <WeatherMoon24Filled
         style={{
           height: '14px',
           width: '14px',
-          color: isDark ? '#50e6ff' : '#a1a1aa',
+          color: isDark ? '#4ade80' : '#a1a1aa',
           zIndex: 1,
         }}
       />

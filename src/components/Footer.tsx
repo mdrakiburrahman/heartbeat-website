@@ -40,7 +40,7 @@ const Footer = () => {
             <rect y="11" width="10" height="10" fill="#00A4EF" />
             <rect x="11" y="11" width="10" height="10" fill="#FFB900" />
           </svg>
-          <span style={{ fontSize: '11px', color: '#ffffff', fontWeight: 500 }}>
+          <span style={{ fontSize: '11px', color: isDark ? '#ffffff' : '#424242', fontWeight: 500 }}>
             © {currentYear} Microsoft
           </span>
         </div>
