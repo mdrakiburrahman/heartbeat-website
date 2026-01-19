@@ -4,7 +4,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { AzureSASCredential } from '@azure/core-auth';
 import {
   EventHubConsumerClient,
-  earliestEventPosition,
+  latestEventPosition,
   ReceivedEventData,
   PartitionContext,
   Subscription,
@@ -173,14 +173,14 @@ export function useEventHub(maxMessages: number = MAX_MESSAGES): UseEventHubRetu
           // Don't set status to error - keep trying to receive
         };
 
-        // Subscribe to all partitions starting from earliest position
+        // Subscribe to all partitions starting from latest position
         const subscription = client.subscribe(
           {
             processEvents,
             processError,
           },
           {
-            startPosition: earliestEventPosition,
+            startPosition: latestEventPosition,
             maxBatchSize: MAX_BATCH_SIZE,
             maxWaitTimeInSeconds: MAX_WAIT_TIME_SECONDS,
           }
