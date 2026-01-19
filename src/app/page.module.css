@@ -546,6 +546,17 @@
   color: rgba(0, 0, 0, 0.75);
 }
 
+.stepNote {
+  color: var(--colorNeutralForeground2, rgba(255,255,255,0.7));
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+:global([data-theme="light"]) .stepNote {
+  color: rgba(0, 0, 0, 0.7);
+}
+
 .workflowArrow {
   text-align: center;
   color: rgba(74, 222, 128, 0.5);

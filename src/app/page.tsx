@@ -848,6 +848,22 @@ export default function Home() {
           </div>
         </div>
 
+        <div className={styles.workflowArrow}>↓</div>
+
+        {/* Step 4: Play around */}
+        <div className={styles.workflowStep}>
+          <div className={styles.stepNumber}>4</div>
+          <div className={styles.stepContent}>
+            <h3 className={styles.stepTitle}>Play around!</h3>
+            <p className={styles.stepDesc}>
+              Scroll up to pause producers to watch them go unhealthy when heartbeat times out in RocksDB after 5 seconds. Restart to watch them initialize and go to healthy.
+            </p>
+            <p className={styles.stepNote}>
+              <em>Note that Spark Streaming must always have one event arriving to progress the microbatch, so don&apos;t pause all producers!</em>
+            </p>
+          </div>
+        </div>
+
       </section>
 
       {/* Open Source Badge */}
