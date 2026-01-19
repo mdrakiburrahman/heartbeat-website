@@ -1,4 +1,4 @@
-/* Heartbeat Page - Tally-inspired Design */
+/* Heartbeat Page - Fabric Green Tally-inspired Design */
 
 .container {
   max-width: 1100px;
@@ -13,10 +13,10 @@
 }
 
 .logo {
-  font-family: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 3.5rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+  background: linear-gradient(135deg, #89e8ad 0%, #4ade80 50%, #22c55e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -32,6 +32,7 @@
 }
 
 .tagline {
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   color: var(--colorNeutralForeground2, rgba(255,255,255,0.9));
   max-width: 700px;
@@ -42,9 +43,9 @@
 
 .badge {
   display: inline-block;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: #f87171;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  color: #89e8ad;
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.5rem 1.25rem;
@@ -78,25 +79,22 @@
 }
 
 .connectionCard.consumerCard {
-  background: rgba(239, 68, 68, 0.03);
-  border-color: rgba(239, 68, 68, 0.15);
+  background: rgba(74, 222, 128, 0.03);
+  border-color: rgba(74, 222, 128, 0.15);
 }
 
 .connectionCard h2 {
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #f87171;
+  color: #89e8ad;
   margin-bottom: 1rem;
 }
 
 .connectionHint {
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
-  font-size: 0.7rem;
-  color: var(--colorNeutralForeground4, rgba(255,255,255,0.4));
-  margin-bottom: 1rem;
-  word-break: break-all;
+  display: none;
 }
 
 .connectionInput {
@@ -107,7 +105,7 @@
   border: 1px solid var(--colorNeutralStroke1, rgba(255,255,255,0.1));
   border-radius: 8px;
   color: var(--colorNeutralForeground1, #e0e0e0);
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   resize: vertical;
   margin-bottom: 1rem;
@@ -116,11 +114,13 @@
 
 .connectionInput:focus {
   outline: none;
-  border-color: #f87171;
+  border-color: #4ade80;
 }
 
 .connectionInput::placeholder {
-  color: var(--colorNeutralForeground4, rgba(255,255,255,0.4));
+  color: rgba(255,255,255,0.5);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
 }
 
 .connectionActions {
@@ -131,9 +131,9 @@
 }
 
 .testButton {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #f87171;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #89e8ad;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -143,7 +143,7 @@
 }
 
 .testButton:hover {
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(74, 222, 128, 0.2);
 }
 
 .statusIndicator {
@@ -191,11 +191,12 @@
 }
 
 .workflow > h2 {
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #f87171;
+  color: #89e8ad;
   margin-bottom: 2rem;
 }
 
@@ -210,20 +211,20 @@
 }
 
 .workflowStep.aiStep {
-  background: rgba(239, 68, 68, 0.03);
-  border-color: rgba(239, 68, 68, 0.15);
+  background: rgba(74, 222, 128, 0.03);
+  border-color: rgba(74, 222, 128, 0.15);
 }
 
 .stepNumber {
   width: 42px;
   height: 42px;
-  background: rgba(239, 68, 68, 0.15);
+  background: rgba(74, 222, 128, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #f87171;
+  color: #89e8ad;
   flex-shrink: 0;
   font-size: 1.1rem;
 }
@@ -248,7 +249,7 @@
 
 .workflowArrow {
   text-align: center;
-  color: rgba(239, 68, 68, 0.5);
+  color: rgba(74, 222, 128, 0.5);
   font-size: 1.5rem;
   padding: 0.5rem 0;
 }
@@ -271,9 +272,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #f87171;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #89e8ad;
   padding: 0.6rem 1.25rem;
   border-radius: 8px;
   font-size: 0.9rem;
@@ -283,7 +284,7 @@
 }
 
 .addButton:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(74, 222, 128, 0.2);
   transform: translateY(-1px);
 }
 
@@ -356,7 +357,7 @@
   margin-left: auto;
   font-size: 0.75rem;
   color: var(--colorNeutralForeground3, rgba(255,255,255,0.4));
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .copyButton {
@@ -371,8 +372,8 @@
 }
 
 .copyButton:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 0.2);
-  color: #f87171;
+  background: rgba(74, 222, 128, 0.2);
+  color: #89e8ad;
 }
 
 .copyButton:disabled {
@@ -389,7 +390,7 @@
   background: var(--colorNeutralBackground1, #0d0d0d);
   padding: 1.25rem;
   overflow-x: auto;
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   line-height: 1.7;
   color: var(--colorNeutralForeground2, #e0e0e0);
@@ -445,7 +446,7 @@
 .streamIcon {
   width: 18px;
   height: 18px;
-  color: #f87171;
+  color: #89e8ad;
 }
 
 .streamControls {
@@ -459,13 +460,13 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8rem;
-  color: var(--colorNeutralForeground3, rgba(255,255,255,0.6));
+  color: rgba(255,255,255,0.85);
   cursor: pointer;
 }
 
 .messageCount {
   font-size: 0.75rem;
-  color: var(--colorNeutralForeground3, rgba(255,255,255,0.5));
+  color: rgba(255,255,255,0.85);
   background: var(--colorNeutralBackground3, rgba(255,255,255,0.05));
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
@@ -479,9 +480,9 @@
 }
 
 .streamButton {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #f87171;
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #89e8ad;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -490,7 +491,7 @@
 }
 
 .streamButton:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(74, 222, 128, 0.2);
 }
 
 .streamButton:disabled {
@@ -522,7 +523,7 @@
   min-height: 200px;
   max-height: 400px;
   overflow-y: auto;
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
 }
 
@@ -553,7 +554,7 @@
   padding: 0.75rem;
   background: var(--colorNeutralBackground2, rgba(255,255,255,0.03));
   border-radius: 6px;
-  border-left: 3px solid #f87171;
+  border-left: 3px solid #89e8ad;
   animation: slideIn 0.3s ease;
 }
 
@@ -617,7 +618,7 @@
 }
 
 .ossBadge:hover {
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(74, 222, 128, 0.2);
   text-decoration: none;
 }
 

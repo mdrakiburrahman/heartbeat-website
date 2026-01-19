@@ -15,21 +15,23 @@ const Header = () => {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        boxShadow: `0 2px 8px ${isDark ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.1)'}`,
+        backgroundColor: isDark ? 'rgba(10, 10, 10, 0.85)' : 'rgba(242, 242, 242, 0.85)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        boxShadow: `0 1px 0 ${isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}`,
+        borderBottom: `1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
       }}
     >
-      {/* Microsoft Bar */}
+      {/* Single Combined Header */}
       <div
         style={{
-          backgroundColor: isDark ? '#0a0a0a' : '#f2f2f2',
-          padding: '8px 24px',
+          padding: '10px 24px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          borderBottom: `1px solid ${isDark ? '#2a2a2a' : '#e0e0e0'}`,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           {/* Microsoft Logo */}
           <a
             href="https://microsoft.com"
@@ -53,6 +55,47 @@ const Header = () => {
             </svg>
             Microsoft
           </a>
+
+          {/* Heartbeat Logo */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div
+              style={{
+                width: '28px',
+                height: '28px',
+                borderRadius: '6px',
+                background: 'linear-gradient(135deg, #89e8ad 0%, #4ade80 50%, #22c55e 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  fill="#ffffff"
+                />
+              </svg>
+            </div>
+            <span
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '16px',
+                fontWeight: 600,
+                background: 'linear-gradient(135deg, #89e8ad 0%, #4ade80 50%, #22c55e 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              heartbeat
+            </span>
+          </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -72,71 +115,6 @@ const Header = () => {
             Microsoft Fabric
             <Open16Regular />
           </a>
-          <ThemeToggle />
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <div
-        style={{
-          backgroundColor: isDark ? '#141414' : '#ffffff',
-          padding: '12px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {/* Heartbeat Logo/Icon */}
-          <div
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #dc2626 0%, #f87171 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                fill="#ffffff"
-              />
-            </svg>
-          </div>
-          <div>
-            <h1
-              style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: isDark ? '#ffffff' : '#242424',
-                margin: 0,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Heartbeat Stream Processing
-            </h1>
-            <p
-              style={{
-                fontSize: '12px',
-                color: isDark ? '#a1a1aa' : '#616161',
-                margin: 0,
-              }}
-            >
-              Stateful Stream Processing Demonstration Fabric Spark.
-            </p>
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <a
             href="https://github.com/mdrakiburrahman/heartbeat-website"
             target="_blank"
@@ -147,10 +125,10 @@ const Header = () => {
               gap: '6px',
               textDecoration: 'none',
               color: isDark ? '#e6e6e6' : '#242424',
-              fontSize: '14px',
-              padding: '8px 12px',
+              fontSize: '13px',
+              padding: '6px 12px',
               borderRadius: '6px',
-              backgroundColor: isDark ? '#242424' : '#f2f2f2',
+              backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
               transition: 'background-color 0.2s',
             }}
           >
@@ -159,6 +137,7 @@ const Header = () => {
             </svg>
             Source Code
           </a>
+          <ThemeToggle />
         </div>
       </div>
     </header>

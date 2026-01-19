@@ -121,9 +121,9 @@ export default function Home() {
             />
             <defs>
               <linearGradient id="heartGradient" x1="2" y1="3" x2="22" y2="21" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#f87171" />
-                <stop offset="0.5" stopColor="#ef4444" />
-                <stop offset="1" stopColor="#dc2626" />
+                <stop stopColor="#89e8ad" />
+                <stop offset="0.5" stopColor="#4ade80" />
+                <stop offset="1" stopColor="#22c55e" />
               </linearGradient>
             </defs>
           </svg>
@@ -142,17 +142,16 @@ export default function Home() {
         {/* Producer Connection */}
         <article className={styles.connectionCard}>
           <h2>Producer Connection</h2>
-          <p className={styles.connectionHint}>
-            Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=...;SharedAccessKey=...;EntityPath=...
-          </p>
           <textarea
             className={styles.connectionInput}
-            placeholder="Paste your Producer Event Hub connection string..."
+            placeholder="Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=...;SharedAccessKey=...;EntityPath=..."
             value={producerConnectionString}
             onChange={(e) => {
               setProducerConnectionString(e.target.value);
               setProducerStatus('disconnected');
             }}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={(e) => e.target.placeholder = 'Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=...;SharedAccessKey=...;EntityPath=...'}
           />
           <div className={styles.connectionActions}>
             <button className={styles.testButton} onClick={testProducerConnection}>
@@ -170,17 +169,16 @@ export default function Home() {
         {/* Consumer Connection */}
         <article className={`${styles.connectionCard} ${styles.consumerCard}`}>
           <h2>Consumer Connection</h2>
-          <p className={styles.connectionHint}>
-            Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=...;SharedAccessKey=...;EntityPath=...
-          </p>
           <textarea
             className={styles.connectionInput}
-            placeholder="Paste your Consumer Event Hub connection string..."
+            placeholder="Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=...;SharedAccessKey=...;EntityPath=..."
             value={consumerConnectionString}
             onChange={(e) => {
               setConsumerConnectionString(e.target.value);
               setConsumerStatus('disconnected');
             }}
+            onFocus={(e) => e.target.placeholder = ''}
+            onBlur={(e) => e.target.placeholder = 'Endpoint=sb://your-namespace.servicebus.windows.net/;SharedAccessKeyName=...;SharedAccessKey=...;EntityPath=...'}
           />
           <div className={styles.connectionActions}>
             <button className={styles.testButton} onClick={testConsumerConnection}>

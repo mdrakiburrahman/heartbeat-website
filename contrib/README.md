@@ -32,7 +32,13 @@
    chmod +x ${GIT_ROOT}/contrib/bootstrap-dev-env.sh && ${GIT_ROOT}/contrib/bootstrap-dev-env.sh
    ```
 
-2. Build and serve the website:
+1. Quick serve:
+
+   ```bash
+   npm run dev -- -p 3847
+   ```
+
+1. Build and serve the website in Production mode:
 
    ```bash
    npm run build && npm run serve
