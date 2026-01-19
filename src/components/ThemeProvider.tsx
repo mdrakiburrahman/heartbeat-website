@@ -38,6 +38,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     // Determine the selected theme based on the user's preference
     const fluentTheme = localTheme === themeType.light ? lightTheme : darkTheme;
 
+    // Set the data-theme attribute on the document body for CSS styling
+    document.body.setAttribute('data-theme', localTheme);
+
     // Set the initial theme
     setTheme({ value: fluentTheme, key: localTheme });
   }, []);
@@ -55,6 +58,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Update the user's theme in local storage
     localStorage.setItem('heartbeat-theme', newLocalTheme);
+
+    // Update the data-theme attribute on the document body for CSS styling
+    document.body.setAttribute('data-theme', newLocalTheme);
 
     // Set the new theme
     setTheme({ value: fluentTheme, key: newLocalTheme });
