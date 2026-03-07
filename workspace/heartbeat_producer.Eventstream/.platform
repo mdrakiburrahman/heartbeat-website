@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "heartbeat_producer",
+    "description": "Producer EventStream - receives heartbeat events from browser, forwards to Spark via Custom Endpoints"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "aaaaaaaa-1111-1111-1111-aaaaaaaaaaaa"
+  }
+}

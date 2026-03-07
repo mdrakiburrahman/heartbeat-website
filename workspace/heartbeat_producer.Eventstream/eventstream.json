@@ -1,0 +1,35 @@
+{
+  "sources": [
+    {
+      "name": "heartbeat_producer_source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "name": "heartbeat_producer_sink",
+      "type": "CustomEndpoint",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "heartbeat_producer-stream"
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "name": "heartbeat_producer-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "heartbeat_producer_source"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "heartbeat_lakehouse",
+    "description": "Lakehouse for Spark Structured Streaming checkpoints and RocksDB state store"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cccccccc-3333-3333-3333-cccccccccccc"
+  }
+}
