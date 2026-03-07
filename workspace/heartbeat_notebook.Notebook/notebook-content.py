@@ -20,44 +20,7 @@
 # META   }
 # META }
 
-# MARKDOWN ********************
-
-# # 💚 Heartbeat — Stateful Stream Processing
-# 
-# This notebook implements **stateful heartbeat monitoring** using Spark Structured Streaming with RocksDB state store.
-# 
-# ### Architecture
-# ```
-# 🌐 Browser (heartbeat-website)
-#     ↓ sends heartbeats
-# 📥 Producer EventStream (Custom Endpoint Source)
-#     ↓ default stream
-# 📤 Producer EventStream (Custom Endpoint Sink)
-#     ↓ Spark reads
-# ⚡ THIS NOTEBOOK — Stateful Processing (RocksDB)
-#     ↓ Spark writes health state
-# 📥 Consumer EventStream (Custom Endpoint Source)
-#     ↓ default stream
-# 📤 Consumer EventStream (Custom Endpoint Sink)
-#     ↓
-# 🌐 Browser reads health status
-# ```
-# 
-# ### How It Works
-# - Heartbeat events arrive from producers (browser-based)
-# - Spark groups by `machine_name` and tracks state transitions:
-#   - `None → Initializing → Healthy ↔ Unhealthy (on 5s timeout)`
-# - Only emits output when state **changes** (not every heartbeat)
-# - Uses **RocksDB** as the state store for efficient stateful processing
-
 # CELL ********************
-
-# ============================================================================
-# Cell 1: Discover EventStream Connection Strings
-# ============================================================================
-# This cell uses the Fabric REST API to automatically retrieve the Event Hub
-# connection strings from the Producer and Consumer EventStreams.
-# No manual copy-paste of connection strings is needed.
 
 import json
 import requests
@@ -87,8 +50,8 @@ if not producer_es or not consumer_es:
         "Please ensure the Jumpstart was installed correctly."
     )
 
-print(f"✅ Found Producer EventStream: {producer_es['id']}")
-print(f"✅ Found Consumer EventStream: {consumer_es['id']}")
+print(f"Found Producer EventStream: {producer_es['id']}")
+print(f"Found Consumer EventStream: {consumer_es['id']}")
 
 def get_eventstream_connections(es_id, es_name):
     """Get source and destination connection strings for an EventStream."""
@@ -107,7 +70,7 @@ def get_eventstream_connections(es_id, es_name):
             conn_response.raise_for_status()
             conn_data = conn_response.json()
             connections["source"] = conn_data["accessKeys"]["primaryConnectionString"]
-            print(f"  📥 {es_name} Source (write): {conn_data['fullyQualifiedNamespace']}")
+            print(f"  {es_name} Source (write): {conn_data['fullyQualifiedNamespace']}")
 
     # Get destination connection (read endpoint)
     for dest in topology.get("destinations", []):
@@ -117,14 +80,14 @@ def get_eventstream_connections(es_id, es_name):
             conn_response.raise_for_status()
             conn_data = conn_response.json()
             connections["destination"] = conn_data["accessKeys"]["primaryConnectionString"]
-            print(f"  📤 {es_name} Sink (read):  {conn_data['fullyQualifiedNamespace']}")
+            print(f"  {es_name} Sink (read):  {conn_data['fullyQualifiedNamespace']}")
 
     return connections
 
-print("\n🔍 Retrieving Producer EventStream connections...")
+print("\nRetrieving Producer EventStream connections...")
 producer_conns = get_eventstream_connections(producer_es["id"], "Producer")
 
-print("\n🔍 Retrieving Consumer EventStream connections...")
+print("\nRetrieving Consumer EventStream connections...")
 consumer_conns = get_eventstream_connections(consumer_es["id"], "Consumer")
 
 # The Spark job reads from Producer sink and writes to Consumer source
@@ -135,12 +98,10 @@ CONSUMER_WRITE_CONNECTION = consumer_conns["source"]
 PRODUCER_WRITE_CONNECTION = producer_conns["source"]
 CONSUMER_READ_CONNECTION = consumer_conns["destination"]
 
-print("\n" + "=" * 60)
-print("✅ Connection strings retrieved successfully!")
-print("=" * 60)
-print(f"\n📋 For the heartbeat website (https://heartbeatspark.z9.web.core.windows.net):")
-print(f"   1. Producer Write Connection — paste into 'Producer Write Connection' box")
-print(f"   2. Consumer Read Connection  — paste into 'Consumer Read Connection' box")
+print("\nConnection strings retrieved successfully.")
+print(f"\nFor the heartbeat website (https://heartbeatspark.z9.web.core.windows.net):")
+print(f"  1. Producer Write Connection - paste into 'Producer Write Connection' box")
+print(f"  2. Consumer Read Connection  - paste into 'Consumer Read Connection' box")
 print(f"\nProducer Write:\n{PRODUCER_WRITE_CONNECTION}\n")
 print(f"Consumer Read:\n{CONSUMER_READ_CONNECTION}\n")
 
@@ -152,20 +113,6 @@ print(f"Consumer Read:\n{CONSUMER_READ_CONNECTION}\n")
 # META }
 
 # CELL ********************
-
-# ============================================================================
-# Cell 2: Stateful Heartbeat Monitoring — Spark Structured Streaming
-# ============================================================================
-
-import json
-import pandas as pd
-
-from datetime import datetime
-from typing import Iterator, Tuple
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import *
-from pyspark.sql.types import *
-from pyspark.sql.streaming.state import GroupState, GroupStateTimeout
 
 # Configure Spark for RocksDB state store
 spark.conf.set("spark.sql.streaming.stateStore.providerClass", "org.apache.spark.sql.execution.streaming.state.RocksDBStateStoreProvider")
@@ -329,10 +276,7 @@ query = (
     .start()
 )
 
-print("🚀 Heartbeat state stream started!")
-print("   Go to the heartbeat website and add producers to send heartbeats.")
-print("   Pause producers to watch them go Unhealthy after 5s timeout.")
-print("\n⏳ Waiting for termination (Ctrl+C or cancel cell to stop)...")
+print("Heartbeat state stream started. Waiting for termination...")
 
 query.awaitTermination()
 
