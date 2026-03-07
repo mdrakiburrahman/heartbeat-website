@@ -12,6 +12,8 @@
    wsl --install -d Ubuntu-24.04
    ```
 
+   Once the jumpstart deploys, browse to the Fabric UI.
+
 1. Clone the repo, and open VSCode in it:
 
    ```bash

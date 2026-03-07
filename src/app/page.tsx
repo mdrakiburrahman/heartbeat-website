@@ -61,10 +61,6 @@ export default function Home() {
     sendHeartbeat,
   } = useEventHubProducer();
 
-  // Spark code from file
-  const [sparkCode, setSparkCode] = useState('');
-  const [codeCopied, setCodeCopied] = useState(false);
-
   // Live stream from actual Event Hub connection
   const {
     status: streamStatus,
@@ -78,14 +74,6 @@ export default function Home() {
   const streamEndRef = useRef<HTMLDivElement>(null);
   const [autoScroll, setAutoScroll] = useState(true);
   const [streamPanelExpanded, setStreamPanelExpanded] = useState(false);
-
-  // Load Spark code from file
-  useEffect(() => {
-    fetch('/spark-streaming-code.py')
-      .then(res => res.text())
-      .then(code => setSparkCode(code))
-      .catch(() => setSparkCode('# Failed to load Spark code'));
-  }, []);
 
   // Auto-scroll to latest message
   useEffect(() => {
@@ -127,17 +115,6 @@ export default function Home() {
       // Ignore parse errors
     }
   }, [messages]);
-
-  // Get Spark code with connection strings injected
-  const getSparkCodeWithConnection = () => {
-    if (!producerReadConnection || producerReadStatus !== 'connected' || 
-        !consumerWriteConnection || consumerWriteStatus !== 'connected') {
-      return sparkCode;
-    }
-    return sparkCode
-      .replace('{PRODUCER_READ_CONNECTION}', producerReadConnection)
-      .replace('{CONSUMER_WRITE_CONNECTION}', consumerWriteConnection);
-  };
 
   const parseConnectionString = (connectionString: string): ParsedConnectionDetails | null => {
     try {
@@ -312,16 +289,6 @@ export default function Home() {
     }
   };
 
-  const copyCode = async () => {
-    const code = getSparkCodeWithConnection();
-    await navigator.clipboard.writeText(code);
-    setCodeCopied(true);
-    setTimeout(() => setCodeCopied(false), 2000);
-  };
-
-  // Spark code is enabled when Producer Read and Consumer Write are connected
-  const isCodeEnabled = producerReadStatus === 'connected' && consumerWriteStatus === 'connected';
-
   return (
     <div className={styles.container}>
       {/* Hero Section */}
@@ -378,20 +345,59 @@ export default function Home() {
       <section className={styles.workflow}>
         <h2>Demo</h2>
         <p className={styles.demoIntro}>
-          Create 2 Fabric Event Streams called <strong>Producer</strong> and <strong>Consumer</strong>. Add a &quot;Custom endpoint&quot; Source and Sink, and grab the Event Hub Connection Strings.
+          Install the Fabric Jumpstart to deploy the EventStreams, Lakehouse and Notebook into your workspace. Run the notebook to get the 4 connection strings.
         </p>
 
-        {/* GIF 1 - Before Producer */}
-        <figure className={styles.demoGif}>
-          <img src="/producer-creation.gif" alt="Producer creation workflow demonstration" />
-        </figure>
+        {/* Jumpstart Install Block */}
+        <div className={styles.codeBlock}>
+          <div className={styles.codeHeader}>
+            <div className={styles.codeDots}>
+              <span></span><span></span><span></span>
+            </div>
+            <span className={styles.codeLabel}>PowerShell</span>
+          </div>
+          <Highlight
+            theme={themes.nightOwl}
+            code={`python -m venv .venv\n.venv\\Scripts\\Activate.ps1\npip install git+https://github.com/mdrakiburrahman/fabric-jumpstart.git@dev/mdrrahman/spark-streaming-md#subdirectory=src/fabric_jumpstart\n$env:FABRIC_JUMPSTART_TOKEN_CREDENTIAL = "AzureCliCredential"\n$wsId = Read-Host "Enter your Fabric Workspace ID"\npython -c "import fabric_jumpstart as js; js.install('stateful-streaming-rocksdb', workspace_id='$wsId', unattended=True)"`}
+            language="powershell"
+          >
+            {({ style, tokens, getLineProps, getTokenProps }) => (
+              <pre className={styles.codeContent} style={{ ...style, background: 'transparent' }}>
+                {tokens.map((line, i) => (
+                  <div key={i} {...getLineProps({ line })}>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
+        </div>
+
+        <p className={styles.demoIntro} style={{ marginTop: '2rem' }}>
+          Once the jumpstart deploys, browse to the Fabric UI.
+        </p>
+
+        {/* Step 1: Run Notebook */}
+        <div className={`${styles.workflowStep} ${styles.aiStep}`}>
+          <div className={styles.stepNumber}>1</div>
+          <div className={styles.stepContent}>
+            <h3 className={styles.stepTitle}>Start Spark Stream in Fabric Notebook</h3>
+            <p className={styles.stepDesc}>
+              Run <strong>heartbeat_notebook</strong> from the Fabric UI, and copy the 4 connection strings it prints into the fields below.
+              Spark will read the Event Stream and mark the device as healthy. If the device disconnects for 5 seconds, 
+              Spark immediately marks it as unhealthy.
+            </p>
+          </div>
+        </div>
 
         <div className={styles.workflowArrow}>↓</div>
 
         {/* Connection Section */}
         <section className={styles.storySection}>
           <p className={styles.connectionIntro}>
-            Enter your EventStream Event Hub Connection-string below. This is a static website with no backend server, all connections will be established without leaving your browser.
+            Paste the 4 connection strings from the notebook output below. This is a static website with no backend server, all connections will be established without leaving your browser.
           </p>
           {/* Producer Write Connection */}
           <article className={styles.connectionCard}>
@@ -552,9 +558,9 @@ export default function Home() {
 
         <div className={styles.workflowArrow}>↓</div>
 
-        {/* Step 1: Add Producer */}
+        {/* Step 2: Add Producer */}
         <div className={styles.workflowStep}>
-          <div className={styles.stepNumber}>1</div>
+          <div className={styles.stepNumber}>2</div>
           <div className={styles.stepContent}>
             <h3 className={styles.stepTitle}>Add a Heartbeat Producer</h3>
             <p className={styles.stepDesc}>
@@ -647,70 +653,6 @@ export default function Home() {
             )}
           </div>
         </div>
-
-        <div className={styles.workflowArrow}>↓</div>
-
-        {/* Step 2: Spark Stream */}
-        <div className={`${styles.workflowStep} ${styles.aiStep}`}>
-          <div className={styles.stepNumber}>2</div>
-          <div className={styles.stepContent}>
-            <h3 className={styles.stepTitle}>Start Spark Stream in Fabric Notebook</h3>
-            <p className={styles.stepDesc}>
-              Spark will read the Event Stream and mark the device as healthy. If the device disconnects for 5 seconds, 
-              Spark immediately marks it as unhealthy.
-            </p>
-            
-            {/* Python Code Block */}
-            <div className={`${styles.codeBlock} ${!isCodeEnabled ? styles.dimmed : ''}`}>
-              <div className={styles.codeHeader}>
-                <div className={styles.codeDots}>
-                  <span></span><span></span><span></span>
-                </div>
-                <span className={styles.codeLabel}>Python</span>
-                <button 
-                  className={`${styles.copyButton} ${codeCopied ? styles.copied : ''}`}
-                  onClick={copyCode}
-                  disabled={!isCodeEnabled}
-                >
-                  {codeCopied ? 'Copied!' : 'Copy'}
-                </button>
-              </div>
-              <Highlight
-                theme={themes.nightOwl}
-                code={getSparkCodeWithConnection()}
-                language="python"
-              >
-                {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                  <pre className={styles.codeContent} style={{ ...style, background: 'transparent' }}>
-                    {tokens.map((line, i) => (
-                      <div key={i} {...getLineProps({ line })}>
-                        {line.map((token, key) => (
-                          <span key={key} {...getTokenProps({ token })} />
-                        ))}
-                      </div>
-                    ))}
-                  </pre>
-                )}
-              </Highlight>
-              {!isCodeEnabled && (
-                <div className={styles.codeOverlay}>
-                  <span>Configure Consumer Connection to enable</span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.workflowArrow}>↓</div>
-
-        <p className={styles.stepNote}>
-          Attach any <strong>Lakehouse</strong> to your Spark Notebook so the Spark Streaming Checkpoint and RocksDB State can be stored in OneLake, and paste the code:
-        </p>
-
-        {/* GIF 3 - After Spark Code */}
-        <figure className={styles.demoGif}>
-          <img src="/spark-streaming.gif" alt="Spark streaming demonstration" />
-        </figure>
 
         <div className={styles.workflowArrow}>↓</div>
 
@@ -873,7 +815,7 @@ export default function Home() {
       {/* Open Source Badge */}
       <section className={styles.openSource}>
         <a 
-          href="https://learn.microsoft.com/en-us/fabric/data-engineering/get-started-streaming" 
+          href="http://jumpstart.fabric.microsoft.com" 
           className={styles.fancyTextContainer}
           target="_blank" 
           rel="noopener noreferrer"
@@ -885,7 +827,7 @@ export default function Home() {
             e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
           }}
         >
-          <span className={styles.fancyText}>View more Spark Streaming patterns at the Fabric docs page</span>
+          <span className={styles.fancyText}>Explore more scenarios at Fabric Jumpstart</span>
         </a>
       </section>
     </div>
