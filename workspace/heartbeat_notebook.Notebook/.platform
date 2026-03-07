@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "heartbeat_notebook",
+    "description": "Stateful heartbeat monitoring using Spark Structured Streaming with RocksDB state store"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dddddddd-4444-4444-4444-dddddddddddd"
+  }
+}

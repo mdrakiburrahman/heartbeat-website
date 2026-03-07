@@ -1,0 +1,35 @@
+{
+  "sources": [
+    {
+      "name": "heartbeat_consumer_source",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "name": "heartbeat_consumer_sink",
+      "type": "CustomEndpoint",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "heartbeat_consumer-stream"
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "name": "heartbeat_consumer-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "heartbeat_consumer_source"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.1"
+}
