@@ -2,23 +2,7 @@
 
 # MARKDOWN ********************
 
-# Fabric Stateful Streaming with RocksDB
-
-# In this notebook you will go hands-on with **Spark Structured Streaming** with Stateful operators. 
-# 
-# By the end you will have built a working **stateful streaming pipeline** using **RocksDB** as a state store and understand the primitives production streaming systems (such as Apache Flink) is built on.
-# 
-# **What you'll learn in this Jumpstart:**
-# - Connect to Azure EventHubs using Spark Structured Streaming
-# - Implement stateful stream processing with `applyInPandasWithState`
-# - Configure RocksDB as a persistent state store for fault tolerance
-# - Build a real-time heartbeat monitoring system with health status transitions
-# - Handle event-time watermarks and state timeouts
-# 
-# **References:**
-# - [Documentation](https://jumpstart.fabric.microsoft.com/fabric_jumpstart/stateful-streaming-rocksdb/) — Full walkthrough and setup guide
-# - [Companion Website](https://heartbeatspark.z9.web.core.windows.net/) — Live demo and additional resources
-# ## Explore Streaming — Core Concepts with Apache Spark
+# # Fabric Stateful Streaming with RocksDB
 # 
 # In this notebook you will go hands-on with **Spark Structured Streaming** with Stateful operators. By the end you will have built a working **stateful streaming pipeline** using **RocksDB** as a state store and understand the primitives production streaming systems (such as Apache Flink) is built on.
 # 
