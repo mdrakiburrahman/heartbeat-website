@@ -2,19 +2,22 @@
 
 # MARKDOWN ********************
 
-# <div style="margin: 0; padding: 0; text-align: left;">
-#   <table style="border: none; margin: 0; padding: 0; border-collapse: collapse;">
-#     <tr>
-#       <td style="border: none; vertical-align: middle; text-align: left; padding: 0; margin: 0;">
-#         <img src="https://heartbeatspark.z9.web.core.windows.net/architecture.png" width="140" />
-#       </td>
-#       <td style="border: none; vertical-align: middle; padding-left: 10px; text-align: left; padding-right: 0; padding-top: 0; padding-bottom: 0;">
-#         <h1 style="font-weight: bold; margin: 0;">Fabric Stateful Streaming Lakehouse</h1>
-#       </td>
-#     </tr>
-#   </table>
-# </div>
+# Fabric Stateful Streaming with RocksDB
+
+# In this notebook you will go hands-on with **Spark Structured Streaming** with Stateful operators. 
 # 
+# By the end you will have built a working **stateful streaming pipeline** using **RocksDB** as a state store and understand the primitives production streaming systems (such as Apache Flink) is built on.
+# 
+# **What you'll learn in this Jumpstart:**
+# - Connect to Azure EventHubs using Spark Structured Streaming
+# - Implement stateful stream processing with `applyInPandasWithState`
+# - Configure RocksDB as a persistent state store for fault tolerance
+# - Build a real-time heartbeat monitoring system with health status transitions
+# - Handle event-time watermarks and state timeouts
+# 
+# **References:**
+# - [Documentation](https://jumpstart.fabric.microsoft.com/fabric_jumpstart/stateful-streaming-rocksdb/) — Full walkthrough and setup guide
+# - [Companion Website](https://heartbeatspark.z9.web.core.windows.net/) — Live demo and additional resources
 # ## Explore Streaming — Core Concepts with Apache Spark
 # 
 # In this notebook you will go hands-on with **Spark Structured Streaming** with Stateful operators. By the end you will have built a working **stateful streaming pipeline** using **RocksDB** as a state store and understand the primitives production streaming systems (such as Apache Flink) is built on.
