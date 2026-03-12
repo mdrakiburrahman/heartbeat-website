@@ -7,7 +7,7 @@
 # In this notebook you will go hands-on with **Spark Structured Streaming** with Stateful operators. By the end you will have built a working **stateful streaming pipeline** using **RocksDB** as a state store and understand the primitives production streaming systems (such as Apache Flink) is built on.
 # 
 # **Refernences:**
-# - [Documentation](https://jumpstart.fabric.microsoft.com/fabric_jumpstart/stateful-streaming-rocksdb/) — Full walkthrough and setup guide
+# - [Documentation](https://jumpstart.fabric.microsoft.com/catalog/stateful-streaming-rocksdb/) — Full walkthrough and setup guide
 # - [Companion Website](https://heartbeatspark.z9.web.core.windows.net/) — Live demo and additional resources
 # 
 # **What you'll learn in this Jumpstart:**
