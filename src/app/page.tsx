@@ -358,7 +358,7 @@ export default function Home() {
           </div>
           <Highlight
             theme={themes.nightOwl}
-            code={`python -m venv .venv\n.venv\\Scripts\\Activate.ps1\npip install git+https://github.com/mdrakiburrahman/fabric-jumpstart.git@dev/mdrrahman/spark-streaming-md#subdirectory=src/fabric_jumpstart\n$env:FABRIC_JUMPSTART_TOKEN_CREDENTIAL = "AzureCliCredential"\n$wsId = Read-Host "Enter your Fabric Workspace ID"\npython -c "import fabric_jumpstart as js; js.install('stateful-streaming-rocksdb', workspace_id='$wsId', unattended=True)"`}
+            code={`python -m venv .venv\n.venv\\Scripts\\Activate.ps1\npip install git+https://github.com/microsoft/fabric-jumpstart.git@main#subdirectory=src/fabric_jumpstart\n$env:FABRIC_JUMPSTART_TOKEN_CREDENTIAL = "AzureCliCredential"\n$wsId = Read-Host "Enter your Fabric Workspace ID"\npython -c "import fabric_jumpstart as js; js.install('stateful-streaming-rocksdb', workspace_id='$wsId', unattended=True)"`}
             language="powershell"
           >
             {({ style, tokens, getLineProps, getTokenProps }) => (
